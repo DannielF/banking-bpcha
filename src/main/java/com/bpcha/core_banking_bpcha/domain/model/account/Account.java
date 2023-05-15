@@ -1,6 +1,9 @@
 package com.bpcha.core_banking_bpcha.domain.model.account;
 
+import com.bpcha.core_banking_bpcha.domain.model.transaction.Transaction;
 import lombok.*;
+
+import java.util.ArrayList;
 
 @Getter
 @Setter
@@ -12,4 +15,5 @@ public class Account {
     private String accountType;
     private float initialBalance;
     private String state;
+    private ArrayList<Transaction> transactions;
 }
