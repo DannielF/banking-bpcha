@@ -1,12 +1,13 @@
 package com.bpcha.core_banking_bpcha.domain.model.person;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(toBuilder = true)
+@SuperBuilder(toBuilder = true)
 public class Person {
     private String name;
     private String genre;
