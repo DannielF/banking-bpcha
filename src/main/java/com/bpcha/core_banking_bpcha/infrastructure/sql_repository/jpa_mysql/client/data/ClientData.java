@@ -1,0 +1,38 @@
+package com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.client.data;
+
+
+import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.account.data.AccountData;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.*;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
+@Entity
+@Table(name = "CLIENT")
+public class ClientData implements Serializable {
+
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @NotEmpty
+    @Column(name = "COLUMN")
+    private String password;
+
+    @NotEmpty
+    @Column(name = "STATE")
+    private String state;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clientData")
+    private ArrayList<AccountData> accountsData;
+}
+
+

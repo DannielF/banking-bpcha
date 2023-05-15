@@ -1,5 +1,6 @@
 package com.bpcha.core_banking_bpcha.domain.model.account;
 
+import com.bpcha.core_banking_bpcha.domain.model.client.Client;
 import com.bpcha.core_banking_bpcha.domain.model.transaction.Transaction;
 import lombok.*;
 
@@ -16,4 +17,5 @@ public class Account {
     private float initialBalance;
     private String state;
     private ArrayList<Transaction> transactions;
+    private Client client;
 }
