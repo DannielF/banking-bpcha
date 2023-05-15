@@ -8,6 +8,6 @@ public interface AccountRepository {
     Account createAccount(Account account);
     Account findAccountById(Integer id);
     List<Account> accountList();
-    Account deleteAccount(Account account);
+    Account deleteAccount(Integer id);
     Account updateAccount(Account account);
 }

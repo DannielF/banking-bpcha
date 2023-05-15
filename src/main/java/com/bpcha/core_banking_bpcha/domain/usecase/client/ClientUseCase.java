@@ -4,6 +4,7 @@ import com.bpcha.core_banking_bpcha.domain.model.client.Client;
 import com.bpcha.core_banking_bpcha.domain.model.client.gateway.ClientRepository;
 import com.bpcha.core_banking_bpcha.domain.model.shared.BusinessException;
 import com.bpcha.core_banking_bpcha.domain.model.shared.TypeExceptions;
+import com.bpcha.core_banking_bpcha.domain.model.shared.ValidationTool;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -17,34 +18,32 @@ public class ClientUseCase {
     }
 
     public Client getClientById(Integer id) {
-        if (id == null) throw new BusinessException(TypeExceptions.ID_CANNOT_BE_NULL.toString());
-
+        ValidationTool.idNotNull(id);
         Client clientResponse = clientRepository.findClientById(id);
-        if (Objects.isNull(clientResponse)) {
-            throw new BusinessException(TypeExceptions.ENTITY_NOT_FOUND_CHECK_ID.toString());
-        }
+        ValidationTool.entityNotNull(clientResponse);
         return clientResponse;
     }
 
     public Client saveClient(Client clientRequest) {
-        if (Objects.isNull(clientRequest)) throw new BusinessException(TypeExceptions.REQUEST_CANNOT_BE_NULL.toString());
+        ValidationTool.validEntity(clientRequest);
+        //if (Objects.isNull(clientRequest)) throw new BusinessException(TypeExceptions.REQUEST_CANNOT_BE_NULL_CHECK_REQUEST.toString());
         return clientRepository.saveClient(clientRequest);
     }
 
-    public Client updateClient(Client clientRequest) {
-        if (Objects.isNull(clientRequest)) throw new BusinessException(TypeExceptions.REQUEST_CANNOT_BE_NULL.toString());
-        Client clientResponse = this.getClientById(clientRequest.getClientId());
+    public Client updateClient(Integer id, Client clientRequest) {
+        if (Objects.isNull(clientRequest)) throw new BusinessException(TypeExceptions.REQUEST_CANNOT_BE_NULL_CHECK_REQUEST.toString());
+        Client clientResponse = this.getClientById(id);
         if (Objects.isNull(clientResponse)) {
             throw new BusinessException(TypeExceptions.ENTITY_DOESNT_EXIST_CANNOT_BE_UPDATED.toString());
         }
         return clientRepository.updateClient(clientRequest);
     }
 
-    public Client deleteClient(Client clientRequest) {
-        Client clientResponse = this.getClientById(clientRequest.getClientId());
+    public Client deleteClient(Integer id) {
+        Client clientResponse = this.getClientById(id);
         if (Objects.isNull(clientResponse)) {
             throw new BusinessException(TypeExceptions.ENTITY_DOESNT_EXIST_CANNOT_BE_DELETED.toString());
         }
-        return clientRepository.deleteClient(clientRequest);
+        return clientRepository.deleteClient(id);
     }
 }
