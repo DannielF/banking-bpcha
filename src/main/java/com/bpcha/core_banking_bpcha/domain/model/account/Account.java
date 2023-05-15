@@ -10,6 +10,6 @@ import lombok.*;
 public class Account {
     private String accountNumber;
     private String accountType;
-    private String initialBalance;
+    private float initialBalance;
     private String state;
 }
