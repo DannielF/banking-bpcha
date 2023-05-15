@@ -9,4 +9,5 @@ public interface AccountRepository {
     Account findAccountById(Integer id);
     List<Account> accountList();
     Account deleteAccount(Account account);
+    Account updateAccount(Account account);
 }

@@ -9,4 +9,5 @@ public interface ClientRepository {
     Client findClientById(Integer id);
     List<Client> clientList();
     Client deleteClient(Client client);
+    Client updateClient(Client client);
 }
