@@ -12,7 +12,7 @@ spring:
         format_sql: true
 
   datasource:
-    url: jdbc:mysql://localhost/bankingPcha?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrival=true
+    url: jdbc:mysql://localhost/banking-pcha?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrival=true
     username: root
     password: test123
     driver-class-name: com.mysql.cj.jdbc.Driver

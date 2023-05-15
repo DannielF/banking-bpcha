@@ -1,1 +1,4 @@
 Main-Class: com.bpcha.core_banking_bpcha.CoreBankingBpchaApplication
+Manifest-Version: 1.0
+Implementation-Title: lib
+Implementation-Version: 0.1.0

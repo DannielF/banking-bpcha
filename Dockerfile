@@ -1,7 +1,14 @@
-FROM docker.io/openjdk:17-jdk-alpine
-ARG JAR_FILE=target/*.jar
-LABEL maintainer="dannielf"
-VOLUME /main-app
-COPY ${JAR_FILE} app.jar
+FROM docker.io/adoptopenjdk:11-jdk-hotspot
+
+WORKDIR /app
+
+COPY ./build.gradle .
+COPY ./settings.gradle .
+
+COPY src/ src/
+
+RUN ./gradlew build
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar","/app.jar"]
+
+ENTRYPOINT ["java", "-jar", "build/libs/your-application.jar"]
