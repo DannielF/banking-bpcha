@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class Client extends Person {
-    private String clientId;
+    private Integer clientId;
     private String password;
     private String state;
 }
