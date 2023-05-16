@@ -8,6 +8,7 @@ import com.bpcha.core_banking_bpcha.domain.model.shared.ValidationTool;
 import com.bpcha.core_banking_bpcha.domain.model.transaction.Transaction;
 import com.bpcha.core_banking_bpcha.domain.model.transaction.gateway.TransactionRepository;
 import lombok.RequiredArgsConstructor;
+import org.joda.time.DateTime;
 
 import java.util.List;
 
@@ -49,6 +50,12 @@ public class TransactionUseCase {
     public Transaction getTransactionById(Integer id) {
         ValidationTool.idNotNull(id);
         Transaction transactionResponse = transactionRepository.findTransactionById(id);
+        ValidationTool.entityNotNull(transactionResponse);
+        return transactionResponse;
+    }
+
+    public List<Transaction> getTransactionsByDateBetween(DateTime from, DateTime to) {
+        var transactionResponse = transactionRepository.transactionsListBetweenDate(from, to);
         ValidationTool.entityNotNull(transactionResponse);
         return transactionResponse;
     }
