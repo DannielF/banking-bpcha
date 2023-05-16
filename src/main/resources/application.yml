@@ -22,3 +22,8 @@ logging:
     org.hibernate:
       sql: debug
       type.descriptor.sql.basic-binder: trace
+
+config:
+  security:
+    user: "admin"
+    password: "admin123"
