@@ -1,14 +1,5 @@
-FROM docker.io/adoptopenjdk:11-jdk-hotspot
-
-WORKDIR /app
-
-COPY ./build.gradle .
-COPY ./settings.gradle .
-
-COPY src/ src/
-
-RUN ./gradlew build
-
-EXPOSE 8080
-
-ENTRYPOINT ["java", "-jar", "build/libs/your-application.jar"]
+FROM docker.io/eclipse-temurin:17-jdk-alpine
+VOLUME /tmp
+COPY *.jar bpcha.jar
+ENV JAVA_OPTS=" -Xshareclasses:name=cacheapp,cacheDir=/cache,nonfatal -XX:+UseContainerSupport -XX:MaxRAMPercentage=70"
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS  -jar bpcha.jar" ]
