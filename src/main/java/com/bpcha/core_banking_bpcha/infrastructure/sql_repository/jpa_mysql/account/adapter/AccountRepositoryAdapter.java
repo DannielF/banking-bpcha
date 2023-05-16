@@ -8,9 +8,7 @@ import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.acco
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -35,7 +33,7 @@ public class AccountRepositoryAdapter implements AccountRepository {
     public List<Account> accountList() {
 
         var accountList = repository.getAccounts();
-        return Arrays.stream(accountList).map(ConverterAccount::toEntity).collect(Collectors.toList());
+        return accountList.stream().map(ConverterAccount::toEntity).toList();
     }
 
     @Override

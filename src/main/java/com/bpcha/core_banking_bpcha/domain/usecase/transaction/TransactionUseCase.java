@@ -9,10 +9,12 @@ import com.bpcha.core_banking_bpcha.domain.model.transaction.Transaction;
 import com.bpcha.core_banking_bpcha.domain.model.transaction.gateway.TransactionRepository;
 import lombok.RequiredArgsConstructor;
 import org.joda.time.DateTime;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @RequiredArgsConstructor
+@Component
 public class TransactionUseCase {
     private final TransactionRepository transactionRepository;
     private final AccountRepository accountRepository;

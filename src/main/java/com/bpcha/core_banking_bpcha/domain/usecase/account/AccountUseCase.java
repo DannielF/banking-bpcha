@@ -5,11 +5,13 @@ import com.bpcha.core_banking_bpcha.domain.model.account.gateway.AccountReposito
 import com.bpcha.core_banking_bpcha.domain.model.shared.BusinessException;
 import com.bpcha.core_banking_bpcha.domain.model.shared.TypeExceptions;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Objects;
 
 @RequiredArgsConstructor
+@Component
 public class AccountUseCase {
     private final AccountRepository accountRepository;
 

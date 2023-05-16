@@ -6,11 +6,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public interface ClientDataRepository extends CrudRepository<ClientData, Integer> {
 
     @Transactional(readOnly = true)
     @Query("select c from ClientData c where c.state = 'TRUE'")
-    ClientData[] getClients();
+    List<ClientData> getClients();
 
     @Transactional
     @Modifying

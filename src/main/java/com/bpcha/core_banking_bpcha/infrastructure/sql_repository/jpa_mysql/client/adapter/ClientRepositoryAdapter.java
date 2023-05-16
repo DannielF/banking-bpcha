@@ -8,9 +8,7 @@ import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.clie
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -35,7 +33,7 @@ public class ClientRepositoryAdapter implements ClientRepository {
     @Override
     public List<Client> clientList() {
         var clientList = repository.getClients();
-        return Arrays.stream(clientList).map(ConverterClient::toEntity).collect(Collectors.toList());
+        return clientList.stream().map(ConverterClient::toEntity).toList();
     }
 
     @Override

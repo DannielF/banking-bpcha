@@ -29,7 +29,7 @@ public class PersonData implements Serializable {
     private String gender;
 
     @Column(name = "AGE")
-    private String age;
+    private Integer age;
 
     @Column(name = "DOCUMENT_ID")
     private Integer documentId;

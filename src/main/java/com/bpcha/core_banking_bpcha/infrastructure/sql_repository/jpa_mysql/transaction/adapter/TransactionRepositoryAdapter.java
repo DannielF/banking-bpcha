@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
@@ -43,6 +42,6 @@ public class TransactionRepositoryAdapter implements TransactionRepository {
     @Override
     public List<Transaction> transactionsListBetweenDate(DateTime from, DateTime to) {
         var transactionsData = repository.getTransactionsDataByDateBetween(from,to);
-        return Arrays.stream(transactionsData).map(ConverterTransaction::toEntity).toList();
+        return transactionsData.stream().map(ConverterTransaction::toEntity).toList();
     }
 }
