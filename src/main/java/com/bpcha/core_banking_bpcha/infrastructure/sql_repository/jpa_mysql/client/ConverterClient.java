@@ -12,26 +12,24 @@ import java.util.stream.Collectors;
 public class ConverterClient {
 
     public static Client toEntity(ClientData clientData) {
-        Client client = new Client();
-        client.setClientId(clientData.getId());
-        client.setPassword(clientData.getPassword());
-        client.setState(clientData.getState());
-        client.setAccounts(clientData.getAccountsData()
-                .stream().map(ConverterAccount::toEntity)
-                .collect(Collectors.toCollection(ArrayList::new))
-        );
-        return client;
+        return new Client().toBuilder()
+                .id(clientData.getId())
+                .password(clientData.getPassword())
+                .state(clientData.getState())
+                .accounts(clientData.getAccountsData()
+                        .stream().map(ConverterAccount::toEntity)
+                        .collect(Collectors.toCollection(ArrayList::new))
+                ).build();
     }
 
     public static ClientData toData(Client client) {
-        ClientData clientData = new ClientData();
-        clientData.setId(client.getClientId());
-        clientData.setPassword(client.getPassword());
-        clientData.setState(client.getState());
-        clientData.setAccountsData(client.getAccounts()
-                .stream().map(ConverterAccount::toData)
-                .collect(Collectors.toCollection(ArrayList::new))
-        );
-        return clientData;
+        return new ClientData().toBuilder()
+                .id(client.getId())
+                .password(client.getPassword())
+                .state(client.getState())
+                .accountsData(client.getAccounts()
+                        .stream().map(ConverterAccount::toData)
+                        .collect(Collectors.toCollection(ArrayList::new))
+                ).build();
     }
 }

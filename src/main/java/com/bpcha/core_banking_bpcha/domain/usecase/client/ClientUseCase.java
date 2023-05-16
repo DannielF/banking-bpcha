@@ -27,7 +27,7 @@ public class ClientUseCase {
     }
 
     public Client saveClient(Client clientRequest) {
-        ValidationTool.validEntity(clientRequest);
+        //ValidationTool.validEntity(clientRequest);
         return clientRepository.saveClient(clientRequest);
     }
 

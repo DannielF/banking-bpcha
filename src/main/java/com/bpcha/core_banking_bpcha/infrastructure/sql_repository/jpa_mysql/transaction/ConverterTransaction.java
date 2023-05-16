@@ -9,22 +9,22 @@ import org.springframework.stereotype.Component;
 public class ConverterTransaction {
 
     public static Transaction toEntity(TransactionData transactionData) {
-        Transaction transaction = new Transaction();
-        transaction.setId(transactionData.getId());
-        transaction.setTransactionBalance(transactionData.getTransactionBalance());
-        transaction.setTransactionType(transactionData.getTransactionType());
-        transaction.setDate(transactionData.getDate());
-        transaction.setAccount(ConverterAccount.toEntity(transactionData.getAccountData()));
-        return transaction;
+        return new Transaction().toBuilder()
+                .id(transactionData.getId())
+                .transactionBalance(transactionData.getTransactionBalance())
+                .transactionType(transactionData.getTransactionType())
+                .date(transactionData.getDate())
+                .account(ConverterAccount.toEntity(transactionData.getAccountData()))
+                .build();
     }
 
     public static TransactionData toData(Transaction transaction) {
-        TransactionData transactionData = new TransactionData();
-        transactionData.setId(transaction.getId());
-        transactionData.setTransactionBalance(transaction.getTransactionBalance());
-        transactionData.setTransactionType(transaction.getTransactionType());
-        transactionData.setDate(transaction.getDate());
-        transactionData.setAccountData(ConverterAccount.toData(transaction.getAccount()));
-        return transactionData;
+        return new TransactionData().toBuilder()
+                .id(transaction.getId())
+                .transactionBalance(transaction.getTransactionBalance())
+                .transactionType(transaction.getTransactionType())
+                .date(transaction.getDate())
+                .accountData(ConverterAccount.toData(transaction.getAccount()))
+                .build();
     }
 }

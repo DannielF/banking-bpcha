@@ -38,5 +38,5 @@ public class PersonData implements Serializable {
     private String address;
 
     @Column(name = "PHONE_NUMBER")
-    private String phoneNumber;
+    private Integer phoneNumber;
 }

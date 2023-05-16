@@ -18,5 +18,5 @@ public class Person {
     private Integer age;
     private Integer documentId;
     private String address;
-    private String phoneNumber;
+    private Integer phoneNumber;
 }

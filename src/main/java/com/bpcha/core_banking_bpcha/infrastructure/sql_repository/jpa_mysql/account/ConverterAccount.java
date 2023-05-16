@@ -9,22 +9,22 @@ import org.springframework.stereotype.Component;
 public class ConverterAccount {
 
     public static Account toEntity(AccountData accountData) {
-        Account account = new Account();
-        account.setAccountType(accountData.getAccountType());
-        account.setAccountNumber(accountData.getAccountNumber());
-        account.setInitialBalance(accountData.getInitialBalance());
-        account.setState(accountData.getState());
-        account.setClient(ConverterClient.toEntity(accountData.getClientData()));
-        return account;
+        return new Account().toBuilder()
+                .accountType(accountData.getAccountType())
+                .accountNumber(accountData.getAccountNumber())
+                .initialBalance(accountData.getInitialBalance())
+                .state(accountData.getState())
+                .client(ConverterClient.toEntity(accountData.getClientData()))
+                .build();
     }
 
     public static AccountData toData(Account account) {
-        AccountData accountData = new AccountData();
-        accountData.setAccountNumber(account.getAccountNumber());
-        accountData.setAccountType(account.getAccountType());
-        accountData.setInitialBalance(account.getInitialBalance());
-        accountData.setState(account.getState());
-        accountData.setClientData(ConverterClient.toData(account.getClient()));
-        return accountData;
+        return new AccountData().toBuilder()
+                .accountNumber(account.getAccountNumber())
+                .accountType(account.getAccountType())
+                .initialBalance(account.getInitialBalance())
+                .state(account.getState())
+                .clientData(ConverterClient.toData(account.getClient()))
+                .build();
     }
 }
