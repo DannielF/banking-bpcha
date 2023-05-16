@@ -7,6 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ClientDataRepository extends CrudRepository<ClientData, Integer> {
 
     @Transactional(readOnly = true)
-    @Query("select c from ClientData c where c.state = 'ACTIVE'")
+    @Query("select c from ClientData c where c.state = 'TRUE'")
     public ClientData getClients();
 }
