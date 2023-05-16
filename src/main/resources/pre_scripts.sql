@@ -10,14 +10,14 @@ insert into CLIENT (password, state, name, documentId) values ('wIwbev', 'True',
 insert into CLIENT (password, state, name, documentId) values ('3ooLoFGwxp9D', 'True', 'Ebeneser Bonwick', '747-84-5871');
 insert into CLIENT (password, state, name, documentId) values ('T3iSPL6', 'False', 'Massimo Piet', '623-64-0433');
 
-insert into ACCOUNT (accountNumber, accountType, initialBalance, state, ID_CLIENT) values ('eUeqF', 'Current', 12627, 'True', '805-91-0590');
-insert into ACCOUNT (accountNumber, accountType, initialBalance, state, ID_CLIENT) values ('EEH6O', 'Savings', 68361, 'True', '149-30-8446');
-insert into ACCOUNT (accountNumber, accountType, initialBalance, state, ID_CLIENT) values ('zjS5r', 'Savings', 28067, 'True', '322-70-8391');
-insert into ACCOUNT (accountNumber, accountType, initialBalance, state, ID_CLIENT) values ('8uDew', 'Savings', 78861, 'True', '486-15-3492');
-insert into ACCOUNT (accountNumber, accountType, initialBalance, state, ID_CLIENT) values ('uRGDs', 'Savings', 97822, 'True', '121-74-8503');
+insert into ACCOUNT (accountNumber, accountType, initialBalance, state, id_client) values ('eUeqF', 'Current', 12627, 'True', '805-91-0590');
+insert into ACCOUNT (accountNumber, accountType, initialBalance, state, id_client) values ('EEH6O', 'Savings', 68361, 'True', '149-30-8446');
+insert into ACCOUNT (accountNumber, accountType, initialBalance, state, id_client) values ('zjS5r', 'Savings', 28067, 'True', '322-70-8391');
+insert into ACCOUNT (accountNumber, accountType, initialBalance, state, id_client) values ('8uDew', 'Savings', 78861, 'True', '486-15-3492');
+insert into ACCOUNT (accountNumber, accountType, initialBalance, state, id_client) values ('uRGDs', 'Savings', 97822, 'True', '121-74-8503');
 
-insert into TRANSACTION (date, transactionType, transactionValue, transactionBalance, ACCOUNT_ID) values ('2022-11-15 00:09:15', 'WITHDRAWAL', 99929, 53029, 1);
-insert into TRANSACTION (date, transactionType, transactionValue, transactionBalance, ACCOUNT_ID) values ('2023-01-06 23:07:38', 'WITHDRAWAL', 12436, 50201, 2);
-insert into TRANSACTION (date, transactionType, transactionValue, transactionBalance, ACCOUNT_ID) values ('2022-11-13 12:19:29', 'DEBIT', 62120, 96881, 3);
-insert into TRANSACTION (date, transactionType, transactionValue, transactionBalance, ACCOUNT_ID) values ('2022-08-11 06:08:15', 'DEBIT', 98110, 56034, 4);
-insert into TRANSACTION (date, transactionType, transactionValue, transactionBalance, ACCOUNT_ID) values ('2022-09-26 03:33:49', 'DEBIT', 57765, 76147, 5);
+insert into TRANSACTION (date, transactionType, transactionValue, transactionBalance, account_id) values ('2022-11-15 00:09:15', 'WITHDRAWAL', 99929, 53029, 1);
+insert into TRANSACTION (date, transactionType, transactionValue, transactionBalance, account_id) values ('2023-01-06 23:07:38', 'WITHDRAWAL', 12436, 50201, 2);
+insert into TRANSACTION (date, transactionType, transactionValue, transactionBalance, account_id) values ('2022-11-13 12:19:29', 'DEBIT', 62120, 96881, 3);
+insert into TRANSACTION (date, transactionType, transactionValue, transactionBalance, account_id) values ('2022-08-11 06:08:15', 'DEBIT', 98110, 56034, 4);
+insert into TRANSACTION (date, transactionType, transactionValue, transactionBalance, account_id) values ('2022-09-26 03:33:49', 'DEBIT', 57765, 76147, 5);
