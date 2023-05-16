@@ -2,11 +2,15 @@ package com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.acc
 
 import com.bpcha.core_banking_bpcha.domain.model.account.Account;
 import com.bpcha.core_banking_bpcha.domain.model.account.gateway.AccountRepository;
+import com.bpcha.core_banking_bpcha.domain.model.shared.BusinessException;
+import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.account.ConverterAccount;
 import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.account.data.AccountDataRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -16,26 +20,33 @@ public class AccountRepositoryAdapter implements AccountRepository {
 
     @Override
     public Account createAccount(Account account) {
-        return null;
+        var accountData = ConverterAccount.toData(account);
+        return ConverterAccount.toEntity(repository.save(accountData));
     }
 
     @Override
     public Account findAccountById(Integer id) {
-        return null;
+        var accountData = repository.findById(id);
+        if (accountData.isPresent()) return ConverterAccount.toEntity(accountData.get());
+        throw new BusinessException("404 Not found, Why? we dont know");
     }
 
     @Override
     public List<Account> accountList() {
-        return null;
+
+        var accountList = repository.getAccounts();
+        return Arrays.stream(accountList).map(ConverterAccount::toEntity).collect(Collectors.toList());
     }
 
     @Override
     public Account deleteAccount(Integer id) {
-        return null;
+        return ConverterAccount.toEntity(repository.logicDeleteAccount(id));
     }
 
     @Override
     public Account updateAccount(Account account) {
-        return null;
+        var accountData = repository.findById(account.getId());
+        if (accountData.isPresent()) return ConverterAccount.toEntity(repository.save(accountData.get()));
+        throw new BusinessException("400 MAD REQUEST");
     }
 }

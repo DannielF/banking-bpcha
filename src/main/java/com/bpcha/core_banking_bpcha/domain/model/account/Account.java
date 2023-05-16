@@ -12,6 +12,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class Account {
+    private Integer id;
     private String accountNumber;
     private String accountType;
     private float initialBalance;
