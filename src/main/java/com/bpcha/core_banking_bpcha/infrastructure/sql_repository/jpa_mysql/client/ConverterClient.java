@@ -11,31 +11,25 @@ import java.util.stream.Collectors;
 @Component
 public class ConverterClient {
 
-    private final ConverterAccount converterAccount;
-
-    public ConverterClient(ConverterAccount converterAccount) {
-        this.converterAccount = converterAccount;
-    }
-
-    public Client toEntity(ClientData clientData) {
+    public static Client toEntity(ClientData clientData) {
         Client client = new Client();
         client.setClientId(clientData.getId());
         client.setPassword(clientData.getPassword());
         client.setState(clientData.getState());
         client.setAccounts(clientData.getAccountsData()
-                .stream().map(converterAccount::toEntity)
+                .stream().map(ConverterAccount::toEntity)
                 .collect(Collectors.toCollection(ArrayList::new))
         );
         return client;
     }
 
-    public ClientData toData(Client client) {
+    public static ClientData toData(Client client) {
         ClientData clientData = new ClientData();
         clientData.setId(client.getClientId());
         clientData.setPassword(client.getPassword());
         clientData.setState(client.getState());
         clientData.setAccountsData(client.getAccounts()
-                .stream().map(converterAccount::toData)
+                .stream().map(ConverterAccount::toData)
                 .collect(Collectors.toCollection(ArrayList::new))
         );
         return clientData;

@@ -8,29 +8,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConverterAccount {
 
-    private final ConverterClient converterClient;
-
-    public ConverterAccount(ConverterClient converterClient) {
-        this.converterClient = converterClient;
-    }
-
-    public Account toEntity(AccountData accountData) {
+    public static Account toEntity(AccountData accountData) {
         Account account = new Account();
         account.setAccountType(accountData.getAccountType());
         account.setAccountNumber(accountData.getAccountNumber());
         account.setInitialBalance(accountData.getInitialBalance());
         account.setState(accountData.getState());
-        account.setClient(converterClient.toEntity(accountData.getClientData()));
+        account.setClient(ConverterClient.toEntity(accountData.getClientData()));
         return account;
     }
 
-    public AccountData toData(Account account) {
+    public static AccountData toData(Account account) {
         AccountData accountData = new AccountData();
         accountData.setAccountNumber(account.getAccountNumber());
         accountData.setAccountType(account.getAccountType());
         accountData.setInitialBalance(account.getInitialBalance());
         accountData.setState(account.getState());
-        accountData.setClientData(converterClient.toData(account.getClient()));
+        accountData.setClientData(ConverterClient.toData(account.getClient()));
         return accountData;
     }
 }
