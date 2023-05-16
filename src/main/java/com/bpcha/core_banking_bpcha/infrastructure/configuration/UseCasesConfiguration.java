@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
 @Configuration
-@ComponentScan(basePackages = "com.bpcha.core_banking_bpcha.domain.usecase",
+@ComponentScan(basePackages = "com.bpcha.core_banking_bpcha",
         includeFilters = {
-                @ComponentScan.Filter(type = FilterType.REGEX, pattern = "^.+UseCase$")
+                @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".+UseCase$")
         },
         useDefaultFilters = false)
 public class UseCasesConfiguration {

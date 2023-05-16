@@ -9,8 +9,9 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
 public class Person {
+    private Integer id;
     private String name;
-    private String genre;
+    private String gender;
     private String age;
     private Integer documentId;
     private String address;

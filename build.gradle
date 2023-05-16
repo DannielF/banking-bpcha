@@ -32,9 +32,6 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
 tasks.named('jar') {
     manifest {
         attributes('Implementation-Title': project.name,

@@ -2,9 +2,11 @@ package com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.cli
 
 
 import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.account.data.AccountData;
+import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.person.data.PersonData;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,10 +15,10 @@ import java.util.ArrayList;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(toBuilder = true)
+@SuperBuilder(toBuilder = true)
 @Entity
 @Table(name = "CLIENT")
-public class ClientData implements Serializable {
+public class ClientData extends PersonData implements Serializable {
 
     @Id
     @Column(name = "ID")
@@ -24,7 +26,7 @@ public class ClientData implements Serializable {
     private Integer id;
 
     @NotEmpty
-    @Column(name = "COLUMN")
+    @Column(name = "PASSWORD")
     private String password;
 
     @NotEmpty
