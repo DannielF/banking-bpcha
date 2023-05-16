@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.bpcha'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '17'
 
 configurations {
@@ -33,9 +33,15 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 }
 
-tasks.named('jar') {
-    manifest {
-        attributes('Implementation-Title': project.name,
-                'Implementation-Version': project.version)
-    }
+tasks.register('makeFolderJar', Copy) {
+    with jar
+    into "${buildDir}/folderJar"
+}
+
+jar {
+    enabled = false
+}
+
+bootJar {
+    archiveFileName = "${project.getName()}.${archiveExtension.get()}"
 }
