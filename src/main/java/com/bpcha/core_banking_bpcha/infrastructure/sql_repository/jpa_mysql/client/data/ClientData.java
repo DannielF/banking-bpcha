@@ -31,8 +31,8 @@ public class ClientData extends PersonData implements Serializable {
     @Column(name = "STATE")
     private String state;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clientData")
-    private List<AccountData> accountsData;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+    private List<AccountData> accounts;
 }
 
 

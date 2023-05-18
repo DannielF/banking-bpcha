@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface AccountDataRepository extends CrudRepository<AccountData, Integer> {
 
-    @Query("select a from AccountData a where a.state = 'TRUE'")
+    @Query("select a from AccountData a where a.state = 'True'")
     List<AccountData> getAccounts();
 
     @Modifying
-    @Query("update AccountData acd set acd.state = 'FALSE' where acd.id = :id")
+    @Query("update AccountData acd set acd.state = 'False' where acd.id = :id")
     AccountData logicDeleteAccount(@Param(value = "id") Integer id);
 }

@@ -5,6 +5,8 @@ import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.acco
 import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.transaction.data.TransactionData;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ConverterTransaction {
 
@@ -26,5 +28,27 @@ public class ConverterTransaction {
                 .date(transaction.getDate())
                 .accountData(ConverterAccount.toData(transaction.getAccount()))
                 .build();
+    }
+
+    public static List<Transaction> toTransactions(List<TransactionData> transactionsData) {
+        return transactionsData.stream().map(t ->
+                new Transaction().toBuilder()
+                        .id(t.getId())
+                        .transactionBalance(t.getTransactionBalance())
+                        .transactionType(t.getTransactionType())
+                        .date(t.getDate())
+                        .build()
+        ).toList();
+    }
+
+    public static List<TransactionData> toTransactionsData(List<Transaction> transactions) {
+        return transactions.stream().map(t ->
+                new TransactionData().toBuilder()
+                        .id(t.getId())
+                        .transactionBalance(t.getTransactionBalance())
+                        .transactionType(t.getTransactionType())
+                        .date(t.getDate())
+                        .build()
+        ).toList();
     }
 }

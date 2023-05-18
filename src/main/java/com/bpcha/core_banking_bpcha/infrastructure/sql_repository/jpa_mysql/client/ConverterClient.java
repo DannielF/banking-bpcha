@@ -19,8 +19,7 @@ public class ConverterClient {
                 .phoneNumber(clientData.getPhoneNumber())
                 .password(clientData.getPassword())
                 .state(clientData.getState())
-                .accounts(clientData.getAccountsData()
-                        .stream().map(ConverterAccount::toEntity).toList())
+                .accounts(ConverterAccount.toAccounts(clientData.getAccounts()))
                 .build();
     }
 
@@ -35,9 +34,7 @@ public class ConverterClient {
                 .phoneNumber(client.getPhoneNumber())
                 .password(client.getPassword())
                 .state(client.getState())
-                .accountsData(client.getAccounts()
-                        .stream().map(ConverterAccount::toData)
-                        .toList())
+                .accounts(ConverterAccount.toAccountsData(client.getAccounts()))
                 .build();
     }
 }

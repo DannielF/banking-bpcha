@@ -40,10 +40,9 @@ public class AccountData implements Serializable {
     @Column(name = "STATE")
     private String state;
 
-    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_CLIENT", referencedColumnName = "ID")
-    private ClientData clientData;
+    private ClientData client;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountData")
     private List<TransactionData> transactions;
