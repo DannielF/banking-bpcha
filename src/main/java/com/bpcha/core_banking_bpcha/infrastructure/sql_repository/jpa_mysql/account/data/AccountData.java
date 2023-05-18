@@ -32,7 +32,6 @@ public class AccountData implements Serializable {
     @Column(name = "ACCOUNT_TYPE")
     private String accountType;
 
-    @NotNull
     @PositiveOrZero
     @Column(name = "INITIAL_BALANCE")
     private float initialBalance;
