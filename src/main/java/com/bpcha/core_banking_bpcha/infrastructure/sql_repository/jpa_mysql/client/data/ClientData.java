@@ -23,11 +23,6 @@ import java.util.List;
 @Table(name = "CLIENT")
 public class ClientData extends PersonData implements Serializable {
 
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
     @NotEmpty
     @Column(name = "PASSWORD")
     private String password;

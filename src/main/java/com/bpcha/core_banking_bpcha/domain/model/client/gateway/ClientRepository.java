@@ -8,6 +8,6 @@ public interface ClientRepository {
     Client saveClient(Client client);
     Client findClientById(Integer id);
     List<Client> clientList();
-    Client deleteClient(Integer id);
+    void deleteClient(Integer id);
     Client updateClient(Client client);
 }

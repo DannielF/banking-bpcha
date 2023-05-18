@@ -6,6 +6,8 @@ import com.bpcha.core_banking_bpcha.domain.model.shared.BusinessException;
 import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.client.ConverterClient;
 import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.client.data.ClientDataRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 public class ClientRepositoryAdapter implements ClientRepository {
 
     private final ClientDataRepository repository;
+    private static final Logger logger = LoggerFactory.getLogger(ClientRepositoryAdapter.class);
 
     @Override
     public Client saveClient(Client client) {
@@ -37,16 +40,12 @@ public class ClientRepositoryAdapter implements ClientRepository {
     }
 
     @Override
-    public Client deleteClient(Integer id) {
-        var clientData = repository.findById(id);
-        clientData.ifPresent(data -> repository.logicDeleteClient(data.getId()));
-        throw new BusinessException("YOU HAS DELETED THE WHOLE DB");
+    public void deleteClient(Integer id) {
+        repository.logicDeleteClient(id);
     }
 
     @Override
     public Client updateClient(Client client) {
-        var clientData = repository.findById(client.getId());
-        clientData.ifPresent(repository::save);
-        throw new BusinessException("It couldn't be updated");
+        return ConverterClient.toEntity(repository.save(ConverterClient.toData(client)));
     }
 }

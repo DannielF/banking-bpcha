@@ -38,9 +38,9 @@ public class AccountUseCase {
         return accountRepository.deleteAccount(id);
     }
 
-    public Account updateAccount(Integer id, Account accountRequest) {
+    public Account updateAccount(Account accountRequest) {
         if (Objects.isNull(accountRequest)) throw new BusinessException(TypeExceptions.REQUEST_CANNOT_BE_NULL_CHECK_REQUEST.toString());
-        Account accountResponse = this.getAccountById(id);
+        Account accountResponse = this.getAccountById(accountRequest.getId());
         if (Objects.isNull(accountResponse)) throw new BusinessException(TypeExceptions.ENTITY_DOESNT_EXIST_CANNOT_BE_UPDATED.toString());
         return accountRepository.updateAccount(accountRequest);
     }

@@ -17,7 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
 public class Client extends Person {
-    private Integer id;
     @Schema(example = "test123")
     private String password;
     @Schema(example = "True/False")

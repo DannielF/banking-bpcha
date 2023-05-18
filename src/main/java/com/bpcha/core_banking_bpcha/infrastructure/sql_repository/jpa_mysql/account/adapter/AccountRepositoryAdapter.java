@@ -43,8 +43,6 @@ public class AccountRepositoryAdapter implements AccountRepository {
 
     @Override
     public Account updateAccount(Account account) {
-        var accountData = repository.findById(account.getId());
-        if (accountData.isPresent()) return ConverterAccount.toEntity(repository.save(accountData.get()));
-        throw new BusinessException("400 MAD REQUEST");
+        return ConverterAccount.toEntity(repository.save(ConverterAccount.toData(account)));
     }
 }

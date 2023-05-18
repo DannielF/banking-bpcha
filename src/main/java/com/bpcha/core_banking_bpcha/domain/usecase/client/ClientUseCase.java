@@ -40,11 +40,11 @@ public class ClientUseCase {
         return clientRepository.updateClient(clientRequest);
     }
 
-    public Client deleteClient(Integer id) {
+    public void deleteClient(Integer id) {
         Client clientResponse = this.getClientById(id);
         if (Objects.isNull(clientResponse)) {
             throw new BusinessException(TypeExceptions.ENTITY_DOESNT_EXIST_CANNOT_BE_DELETED.toString());
         }
-        return clientRepository.deleteClient(id);
+        clientRepository.deleteClient(id);
     }
 }
