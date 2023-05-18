@@ -12,7 +12,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,7 +37,7 @@ public class ClientData extends PersonData implements Serializable {
     private String state;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "clientData")
-    private ArrayList<AccountData> accountsData;
+    private List<AccountData> accountsData;
 }
 
 

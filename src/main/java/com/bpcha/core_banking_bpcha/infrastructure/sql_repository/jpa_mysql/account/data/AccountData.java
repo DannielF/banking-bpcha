@@ -8,7 +8,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -47,5 +47,5 @@ public class AccountData implements Serializable {
     private ClientData clientData;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountData")
-    private ArrayList<TransactionData> transactions;
+    private List<TransactionData> transactions;
 }

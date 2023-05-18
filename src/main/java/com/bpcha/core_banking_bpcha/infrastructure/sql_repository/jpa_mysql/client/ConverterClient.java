@@ -5,9 +5,6 @@ import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.acco
 import com.bpcha.core_banking_bpcha.infrastructure.sql_repository.jpa_mysql.client.data.ClientData;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
 @Component
 public class ConverterClient {
 
@@ -17,9 +14,8 @@ public class ConverterClient {
                 .password(clientData.getPassword())
                 .state(clientData.getState())
                 .accounts(clientData.getAccountsData()
-                        .stream().map(ConverterAccount::toEntity)
-                        .collect(Collectors.toCollection(ArrayList::new))
-                ).build();
+                        .stream().map(ConverterAccount::toEntity).toList())
+                .build();
     }
 
     public static ClientData toData(Client client) {
@@ -29,7 +25,7 @@ public class ConverterClient {
                 .state(client.getState())
                 .accountsData(client.getAccounts()
                         .stream().map(ConverterAccount::toData)
-                        .collect(Collectors.toCollection(ArrayList::new))
-                ).build();
+                        .toList())
+                .build();
     }
 }
